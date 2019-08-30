@@ -2,12 +2,12 @@ import serial
 import tkinter as tk
 import time
 
-isConnected = False
-
 class Check:
     counter = 0
 
     def __init__(self, port="COM3", baud_rate=9600): # default port and baud rate of connection
+        self.ser = serial.Serial()
+        self.isConnected = False
         self.port = port
         self.baud_rate = baud_rate
         self.wndw = tk.Tk(screenName=None, baseName=None, className="Tk", useTk=1)
@@ -19,15 +19,13 @@ class Check:
         self.wndw.mainloop()
 
     def scanning(self):
-        global isConnected
         try:
-            ser = serial.Serial(self.port, self.baud_rate)
+            self.ser = serial.Serial(self.port, self.baud_rate)
             print('Serial found')
             time.sleep(1)
-            isConnected = True
+            self.isConnected = True
             self.wndw.after_cancel(self.scanner)
             self.wndw.destroy()
-            return ser
         except serial.serialutil.SerialException:
             self.counter = self.counter+1 if self.counter<10 else 0
             print('\rException '+('.'*self.counter), end='')
