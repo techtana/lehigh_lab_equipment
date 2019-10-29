@@ -4,7 +4,7 @@ from ControllerUI.controllergui import *
 from SlackComm.messenger import *
 import tkinter as tk
 
-
+# Find your slack url here. https://api.slack.com/messaging/webhooks
 SLACK_URL = "https://hooks.slack.com/services/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"
 
 
