@@ -4,13 +4,14 @@ from ControllerUI.controllergui import *
 from SlackComm.messenger import *
 import tkinter as tk
 
-
+# Find your slack url here. https://api.slack.com/messaging/webhooks
 SLACK_URL = "https://hooks.slack.com/services/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"
 
 
 if __name__ == '__main__':
-    ser = Check('COM3', 9600)  # Check if serial comm is established
-    #if isConnected is False: exit()  # Exit if the window is closed without serial connection verified
+    check = Check('COM3', 9600)  # Check if serial comm is established
+    if check.isConnected is False: exit()  # Exit if the window is closed without serial connection verified
+    else: ser = check.ser
 
     wndw = tk.Tk(screenName=None, baseName=None, className="Tk", useTk=1)
     wndw.title('Dip Coater Controller')
