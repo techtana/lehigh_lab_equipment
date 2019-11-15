@@ -14,5 +14,3 @@ about the construction of the etching machine and the code for Arduino.
 This module allows you to send signals read from Arduino controller to users via Slack or email. 
 It can also be modified into a 2-way communication i.e. in case you want to control the 
 research instrument via Arduino or just configuring the Arduino itself.
-
-
